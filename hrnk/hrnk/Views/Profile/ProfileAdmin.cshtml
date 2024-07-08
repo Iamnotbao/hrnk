@@ -1,0 +1,33 @@
+﻿@model hrnk.Models.User
+@{
+    var userId = User.FindFirst("UserId")?.Value;
+    
+}
+
+
+
+<form asp-action="ProfileDetail">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="userid"></label>
+        <input asp-for="userid" class="form-control" />
+        <span asp-validation-for="userid" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="username"></label>
+        <input asp-for="username" class="form-control" />
+        <span asp-validation-for="username" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="role_id"></label>
+        <input asp-for="role_id" class="form-control" />
+        <span asp-validation-for="role_id" class="text-danger"></span>
+    </div>
+    <button>
+        <a asp-controller="Profile" asp-action="ProfileEdit" asp-route-id="@userId">Edit</a>
+    </button>
+</form>
+

@@ -1,0 +1,108 @@
+﻿@model hrnk.Models.Role
+
+@{
+    ViewData["Title"] = "Edit";
+    var roles = ViewBag.Role;
+}
+<style>
+    /* Style for the small box */
+    .small-box {
+        background-color: #f0f0f0; /* Background color */
+        border: 1px solid #ccc; /* Border color and thickness */
+        padding: 15px; /* Padding inside the box */
+        margin: 0 auto 15px auto; /* Centered with bottom margin */
+        width: 600px; /* Fixed width for small appearance */
+        text-align: center; /* Center align text inside */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    }
+
+    .edit_row {
+        justify-content: center;
+    }
+
+
+
+
+    /* Style for the form inside the box */
+    .small-box form {
+        /* Add specific form styling here if needed */
+    }
+
+    /* Style for the form group (input and label) */
+    .small-box .form-group {
+        margin-bottom: 10px; /* Bottom margin for form groups */
+    }
+
+    /* Style for form labels */
+    .small-box label {
+        font-weight: bold; /* Bold font weight for labels */
+        color: #555; /* Label text color */
+    }
+
+    .form-group label {
+        text-align: left !important;
+    }
+    /* Style for form inputs */
+    .small-box input[type="text"],
+    .small-box input[type="password"],
+    .small-box select {
+        width: 100%; /* Full width input/select */
+        padding: 8px; /* Padding inside input/select */
+        font-size: 14px; /* Font size for input/select */
+        border: 1px solid #ccc; /* Border color and thickness */
+        border-radius: 3px; /* Rounded corners */
+    }
+
+    /* Style for submit button */
+    .small-box input[type="submit"] {
+        background-color: #007bff; /* Blue background color for button */
+        color: #fff; /* Text color for button */
+        border: none; /* No border */
+        padding: 10px 20px; /* Padding inside button */
+        cursor: pointer; /* Pointer cursor on hover */
+        border-radius: 3px; /* Rounded corners */
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .small-box input[type="submit"]:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+</style>
+
+<h1 class="title">Edit</h1>
+<hr />
+<div class="row edit_row">
+    <div class="col-md-4">
+        <div class="small-box">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @{
+                    var id = ViewBag.Id;
+                    <input type="hidden" id="id" value=@id />
+                }
+                <div class="form-group">
+                    <label asp-for="role_name" class="control-label"></label>
+                    <input asp-for="role_name" class="form-control" />
+                    <span asp-validation-for="role_name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

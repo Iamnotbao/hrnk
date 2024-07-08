@@ -1,0 +1,29 @@
+﻿@model hrnk.Models.Role
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.role_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.role_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.role_name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.role_name)
+        </dd>
+       
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.role_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

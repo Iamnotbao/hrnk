@@ -1,0 +1,80 @@
+﻿@model IEnumerable<hrnk.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+    List<Role> roles = ViewBag.Role;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.userid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+
+            <th>
+                Role
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_create_at)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_create_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_update_at)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_update_by)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.username)
+                </td>
+                <td>
+                    @foreach (var role in roles)
+                    {
+                        if (item.role_id == role.role_id)
+                        {
+                            @role.role_name
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user_create_at)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user_create_by)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user_update_at)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user_update_by)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.userid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.userid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.userid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
